@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+       
+        .list {
+            display:inline-block;
+            width: 50px;
+        }
+        .detailForWeibo {
+            display: none;
+            
+        }
+        .visibleWeibo{
+            display:block;
+            margin-left: 10px;
+            
+        }
+        .detailForQQ{
+            display: none;
+           
+        }
+        .visibleQQ{
+            display:block;
+            margin-left:60px;
+         
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="weibo list" >微博</button>
+        <button class="QQ list">QQ</button>
+        <button class="weixin list">微信</button>
+    </div>
+    <div class="detailForWeibo">
+        <div >123</div>
+        <div >456</div>
+        <div >789</div>
+    </div>
+    <div class="detailForQQ">
+        <div >abc</div>
+        <div >efg</div>
+        <div >hmk</div>
+    </div>
+    
+    <script type="text/javascript">
+        function addEvent(target,className){
+            target.addEventListener("mouseover",function(){
+                target.classList.add("visibleWeibo");
+            })
+            target.addEventListener("mouseout",function(){
+                target.classList.remove("visibleWeibo");
+            })
+
+        }
+        let detailForWeibo=document.querySelector(".weibo");
+        let detailForQQ=document.querySelector(".QQ");
+        addEvent(detailForWeibo);
+        addEvent(detailForQQ)
+
+
+        
+        // let weibo=document.querySelector(".weibo");
+        // let detailForWeibo = document.querySelector(".detailForWeibo");
+        // let flagForWeibo=false;
+        //     weibo.addEventListener("mouseover" ,function(){
+        //         if(flagForWeibo===false){
+        //             detailForWeibo.classList.add("visibleWeibo");
+        //             flagForWeibo=true;
+
+                    
+        //         }     
+        //      })
+        //      weibo.addEventListener("mouseout" ,function(){
+        //         if(flagForWeibo===true){
+                
+        //         detailForWeibo.classList.remove("visibleWeibo");
+        //         flagForWeibo=false;
+        //         }
+        //      })
+        // let QQ=document.querySelector(".QQ");
+        // let detailForQQ = document.querySelector(".detailForQQ");
+        // let flagForQQ=false;
+        //     QQ.addEventListener("mouseover" ,function(){
+        //         if(flagForQQ===false){
+        //             detailForQQ.classList.add("visibleQQ");
+        //             flagForQQ=true;
+        //         }
+        //      })
+        //      QQ.addEventListener("mouseout" ,function(){
+        //         if(flagForQQ===true){
+        //         detailForQQ.classList.remove("visibleQQ");
+        //         flagForQQ=false;
+        //         }
+        //      })
+    </script>
+</body>
+</html>
