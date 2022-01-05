@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="out">out
+        <div class="middle">midlle
+            <p class="inner">inner</p><p>
+        </p></div>
+    </div>
+
+    <div class="out2">out2
+        <p class="middle2">middle2
+            </p><p class="inner2">inner2</p>
+        <p></p>
+    </div>
+
+    <button class="container">this is a box
+
+    </button>
+
+    <script type="text/javascript">//此时点击inner和middle都会触发打印
+let clickOut = document.querySelector(".out");
+let clickMiddle = document.querySelector(".middle");
+let clickInner = document.querySelector(".inner");
+clickOut.onclick = function() {
+    console.log('this is out');
+};
+clickMiddle.onclick = function() {
+    console.log('this is middle');
+};
+clickInner.onclick = function(event) {
+    event.stopPropagation();
+    console.log('this is inner');
+};
+//事件捕捉
+let clickOut2 = document.querySelector(".out2");
+let clickMiddle2 = document.querySelector(".middle2");
+let clickInner2 = document.querySelector(".inner2");
+clickOut2.addEventListener("click", function() {
+    console.log('out2');
+}, true);
+clickMiddle2.addEventListener("click", function() {
+    console.log('middle2');
+}, true);
+clickInner2.addEventListener("click", function() {
+    console.log('inner2');
+}, true);
+
+</script>
+
+</body>
+</html>
