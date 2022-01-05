@@ -19,9 +19,10 @@
         <p></p>
     </div>
 
-    <button class="container">this is a box
-
-    </button>
+    <input class="amount" value="99" placeholder="enter the number"> 
+    <button class="addDiv">addDiv</button>
+    <div class="container">this is a box
+    </div>
 
     <script type="text/javascript">//此时点击inner和middle都会触发打印
 let clickOut = document.querySelector(".out");
@@ -50,6 +51,18 @@ clickMiddle2.addEventListener("click", function() {
 clickInner2.addEventListener("click", function() {
     console.log('inner2');
 }, true);
+//循环div
+let addDiv = document.querySelector(".addDiv");
+let container = document.querySelector(".container");
+let amount = document.querySelector(".amount");
+addDiv.onclick = ()=>{
+    let amountNum = amount.value - 0;
+    for(let i = 0; i < amountNum; i++){
+        let newNode = document.createElement("div");
+        newNode.textContent = "this is div" + (i + 1);
+        container.appendChild(newNode);
+    }
+};
 
 </script>
 
