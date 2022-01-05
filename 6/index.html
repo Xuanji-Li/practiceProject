@@ -1,70 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div class="out">out
         <div class="middle">midlle
-            <p class="inner" >inner<p>
+            <p class="inner">inner </p>
         </div>
     </div>
 
-    <div class ="out2">out2
+    <div class="out2">out2
         <p class="middle2">middle2
             <p class="inner2">inner2</p>
         </p>
     </div>
 
-    <input class="amount" value ="99"placeholder="enter the number"></input> 
+    <input class="amount" value="99" placeholder="enter the number"></input>
     <button class="addDiv">addDiv</button>
-    <div class ="container">this is a box
+    <div class="container">this is a box
     </div>
 
     <script type="text/javascript">
         //此时点击inner和middle都会触发打印
-        let clickOut= document.querySelector(".out")
-        let clickMiddle=document.querySelector(".middle");
-        let clickInner=document.querySelector(".inner")
-        clickOut.onclick=function(){
+        let clickOut = document.querySelector(".out")
+        let clickMiddle = document.querySelector(".middle");
+        let clickInner = document.querySelector(".inner")
+        clickOut.onclick = function () {
             console.log('this is out');
         };
-        clickMiddle.onclick= function(){
+        clickMiddle.onclick = function () {
             console.log('this is middle')
         }
-        clickInner.onclick=function(event){
+        clickInner.onclick = function (event) {
             event.stopPropagation();
             console.log('this is inner');
         };
-        
+
         //事件捕捉
-        let clickOut2=document.querySelector(".out2");
-        let clickMiddle2=document.querySelector(".middle2");
-        let clickInner2=document.querySelector(".inner2");
-        clickOut2.addEventListener("click",function(){console.log('out2')},true);
-        clickMiddle2.addEventListener("click",function(){console.log('middle2')},true);
-        clickInner2.addEventListener("click",function(){console.log('inner2')},true);
+        let clickOut2 = document.querySelector(".out2");
+        let clickMiddle2 = document.querySelector(".middle2");
+        let clickInner2 = document.querySelector(".inner2");
+        clickOut2.addEventListener("click", function () { console.log('out2') }, false);
+        clickMiddle2.addEventListener("click", function () { console.log('middle2') }, true);
+        clickInner2.addEventListener("click", function () { console.log('inner2') }, true);
 
 
         //循环div
-        let addDiv=document.querySelector(".addDiv");
-        let container=document.querySelector(".container");
-        let amount=document.querySelector(".amount");
-        
-        
-        addDiv.onclick=()=>{
-            let amountNum=amount.value-0;
-            for(let i=0;i<amountNum; i++){
-                let newNode=document.createElement("div");
-                newNode.textContent="this is div"+(i+1);
+        let addDiv = document.querySelector(".addDiv");
+        let container = document.querySelector(".container");
+        let amount = document.querySelector(".amount");
+
+
+        addDiv.onclick = () => {
+            let amountNum = parseInt(amount.value);
+            for (let i = 0; i < amountNum; i++) {
+                let newNode = document.createElement("div");
+                newNode.className = "nthDiv";
+                newNode.textContent = "this is div" + (i + 1);
                 container.appendChild(newNode);
+
+                newNode.onclick = (() => {
+                    console.log(newNode.textContent)
+                })
             }
         }
-        
+        // function printDiv(nthDiv){
+        //   console.log("here we go"+this.nthDiv.textContent);
+        // }
+        // let clickNthDiv=document.getElementsByClassName(".nthDiv");
+        // clickNthDiv.onclick=printDiv(clickNthDiv);
+
+
     </script>
 
 </body>
+
 </html>
