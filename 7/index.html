@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .randomColor{
+            margin-top:50px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="toDoList">toDoList
+        <input class="inputContent" placeholder="what to do"></input>
+        <button class="add">add</button>
+    </div>
+    <div class="randomColor">click button to change my color</div>
+    <button class="clickMe">click me</button>
+
+
+    <script type="text/javascript">
+        //foreach更慢，不会return值，只会对数组中每个元素执行一遍传入的函数，
+	    //map 更快， 会return值
+        let arry= [1,2,3,4];
+        console.log(arry);
+
+        arry.forEach(element => {
+            console.log(element*2);
+        });
+
+        // let arry2= arry.map(element => element*2);
+        let arry2= arry.map(element=>{
+            return element*2;
+        })
+        console.log(arry2)
+       
+        //filter 
+        let arr=[2,23,24,255,66]
+        let arr1=arr.filter(element=>{
+            return element>22;
+        })
+        console.log(arr1);
+        
+        //筛选出目标的数组
+        var arr2=[
+        {name:"a",id:1},
+        {name:"b",id:2},
+        {name:"c",id:3},
+        {name:"d",id:4},
+        {name:"e",id:5}
+        ]
+        let result= arr2.filter(element=>{
+            return element.id==2;
+        })
+        console.log(result);
+        let result1= arr2.filter(element=>{
+            return element.id==2 || element.id==3;
+        })
+        console.log(result1);
+        
+        //todoList
+        let toDoList= document.querySelector(".toDoList");
+        let inputContent=document.querySelector(".inputContent");
+        let add=document.querySelector(".add");
+        add.onclick=function(){
+            let newItem= document.createElement("div");
+            newItem.className=newItem.textContent;
+
+            let newItemContent=document.createElement("span");
+            newItemContent.textContent= inputContent.value;
+            newItem.appendChild(newItemContent);
+            let newItemDelete= document.createElement("button");
+            newItemDelete.textContent="delete";
+            newItem.appendChild(newItemDelete);
+            let newItemModify= document.createElement("button");
+            newItemModify.textContent="modify";
+            newItem.appendChild(newItemModify);
+            let newItemInput= document.createElement("input");
+            newItem.appendChild(newItemInput);
+
+            newItemDelete.onclick=function(){
+                this.parentNode.parentNode.removeChild(this.parentNode);
+            }
+            newItemModify.onclick=function(){
+                newItemContent.textContent= newItemInput.value;
+            }
+            toDoList.appendChild(newItem);
+        }
+
+        let clickMe=document.querySelector(".clickMe");
+        let randomColor = document.querySelector(".randomColor");
+        clickMe.onclick=function(){
+            let col="#";
+            for(let i=0;i<6;i++){
+                let temp=Math.floor(Math.random()*16).toString(16);
+                col+=temp;
+            }
+            console.dir(col);
+            randomColor.style.color=col;
+        }
+        
+        
+        
+
+
+    </script>
+</body>
+</html>
